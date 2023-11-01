@@ -1,190 +1,177 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-int c_bean = 10, milk = 10, water = 10;
-void cappuccino(void) // for cappuccino serve
-{
-    if (c_bean < 2 || milk < 2 || water < 1) // if ingredient quantity is less than ingredient quantity required for the cappuccino
-    {
-        cout << "Cappuccino has not been served beacuse of less ingredient!!" << endl;
-    }
-    else
-    {
+
+class CoffeeMachine {
+private:
+    int c_bean;
+    int milk;
+    int water;
+
+public:
+    CoffeeMachine(int initial_coffee_beans, int initial_milk, int initial_water)
+        : c_bean(initial_coffee_beans), milk(initial_milk), water(initial_water) {}
+
+    void serveCappuccino();
+    void serveLatte();
+    void serveEspresso();
+    void serveMilk();
+    void serveWater();
+    void fillCoffeeBeans(int quantity);
+    void fillMilk(int quantity);
+    void fillWater(int quantity);
+    void displayIngredients();
+};
+
+void CoffeeMachine::serveCappuccino() {
+    if (c_bean < 2 || milk < 2 || water < 1) {
+        cout << "Cappuccino cannot be served due to insufficient ingredients!" << endl;
+    } else {
         c_bean -= 2;
         milk -= 2;
-        water -= 1;
-        cout << "Cappuccino has been served suceessfuly" << endl;
+        water--;
+        cout << "Cappuccino served successfully!" << endl;
     }
 }
-void Latte(void)
-{
-    if (c_bean < 2 || milk < 3 || water < 1)
-    {
-        cout << "Latte has not been served beacuse of less ingredient!!" << endl;
-    }
-    else
-    {
+
+void CoffeeMachine::serveLatte() {
+    if (c_bean < 2 || milk < 3 || water < 1) {
+        cout << "Latte cannot be served due to insufficient ingredients!" << endl;
+    } else {
         c_bean -= 2;
         milk -= 3;
-        water -= 1;
-        cout << "Latte has been served suceessfuly" << endl;
+        water--;
+        cout << "Latte served successfully!" << endl;
     }
 }
-int Espresso(void)
-{
-    if (c_bean < 3 || water < 1)
-    {
-        cout << "Espresso has not been served beacuse of less ingredient!!" << endl;
-    }
-    else
-    {
+
+void CoffeeMachine::serveEspresso() {
+    if (c_bean < 3 || water < 1) {
+        cout << "Espresso cannot be served due to insufficient ingredients!" << endl;
+    } else {
         c_bean -= 3;
-        water -= 1;
-        cout << "Espresso has been served suceessfuly" << endl;
+        water--;
+        cout << "Espresso served successfully!" << endl;
     }
 }
-int Milk(void)
-{
-    if (milk < 3)
-    {
-        cout << "Milk has not been served beacuse of less ingredient!!" << endl;
-    }
-    else
-    {
 
+void CoffeeMachine::serveMilk() {
+    if (milk < 3) {
+        cout << "Milk cannot be served due to insufficient ingredients!" << endl;
+    } else {
         milk -= 3;
-        cout << "Milk has been served suceessfuly" << endl;
+        cout << "Milk served successfully!" << endl;
     }
 }
-int Water(void)
-{
-    if (water < 3)
-    {
-        cout << "Water has not been served beacuse of less ingredient!!" << endl;
-    }
-    else
-    {
+
+void CoffeeMachine::serveWater() {
+    if (water < 3) {
+        cout << "Water cannot be served due to insufficient ingredients!" << endl;
+    } else {
         water -= 3;
-        cout << "Water has been served suceessfuly" << endl;
+        cout << "Water served successfully!" << endl;
     }
 }
 
-void fill_c_beans(void)
-{
-    int i;
-    cout << "Enter the Quantity: ";
-    cin >> i;
-    c_bean += i;
-    if (c_bean < 11)  //if c_bean is less than 11 then go ahead
-    {
-        cout << i << " Units of Coffee beans filled successfuly." << endl;
-    }
-    else
-    {
-        c_bean -= i;
-        cout << i << " Units of Coffee beans cannot filled successfuly. there is Overflow!!. Make Sure the capacity of machine" << endl;
-    }
-}
-void fill_milk(void)
-{
-    int i;
-    cout << "Enter the Quantity: ";
-    cin >> i;
-
-    milk += i;
-    if (milk < 11)
-    {
-        cout << i << " Units of milk filled successfuly." << endl;
-    }
-    else
-    {
-        milk -= i;
-        cout << i << " Units of milk cannot filled successfuly. there is Overflow!!. Make Sure the capacity of machine";
+void CoffeeMachine::fillCoffeeBeans(int quantity) {
+    if (c_bean + quantity <= 10) {
+        c_bean += quantity;
+        cout << quantity << " units of Coffee beans filled successfully." << endl;
+    } else {
+        cout << "Coffee beans cannot be filled due to overflow. Ensure the machine's capacity." << endl;
     }
 }
 
-void fill_water(void)
-{
-    int i;
-    cout << "Enter the Quantity: ";
-    cin >> i;
-    water += i;
-    if (water < 11)
-    {
-        cout << i << " Units of water filled successfuly." << endl;
-    }
-    else
-    {
-        water -= i;
-        cout << i << " Units of water cannot filled successfuly. there is Overflow!!. Make Sure the capacity of machine" << endl;
+void CoffeeMachine::fillMilk(int quantity) {
+    if (milk + quantity <= 10) {
+        milk += quantity;
+        cout << quantity << " units of milk filled successfully." << endl;
+    } else {
+        cout << "Milk cannot be filled due to overflow. Ensure the machine's capacity." << endl;
     }
 }
-void Display()
-{
-    cout <<"coffe Bean "<< c_bean << endl<<"Milk " << milk << " " <<endl<<"water "<< water << endl;
-}
-void choice()
-{
-    int choice;
-    cout << "Enter the choice: ";
-    cin >> choice;
 
-    switch (choice)
-    {
-    case 1:
-        cappuccino();
-        break;
-    case 2:
-        Latte();
-        break;
-    case 3:
-        Espresso();
-        break;
-    case 4:
-        Milk();
-        break;
-    case 5:
-        Water();
-        break;
-    case 6:
-        fill_c_beans();
-        break;
-    case 7:
-        fill_milk();
-        break;
-    case 8:
-        fill_water();
-        break;
-    case 9:
-        Display();
-        break;
-    case 10:
-        cout << "Turn Off..!"<<endl;
-        break;
-    default:
-        cout<<"your choice is doesn't exit..! please give correct choice..!"<<endl;;
+void CoffeeMachine::fillWater(int quantity) {
+    if (water + quantity <= 10) {
+        water += quantity;
+        cout << quantity << " units of water filled successfully." << endl;
+    } else {
+        cout << "Water cannot be filled due to overflow. Ensure the machine's capacity." << endl;
     }
+
 }
-int main()
-{
 
-    cout << "Please Select a choice from the following options:" << endl
-         << endl;
-    cout << "1. Serve Cappuccino." << endl
-         << "2. Serve Latte." << endl
-         << "3. Serve Espresso." << endl
-         << "4. Serve Milk." << endl
-         << "5. Serve Water." << endl
-         << "6. Fill Coffee beans." << endl
-         << "7. Fill Milk." << endl
-         << "8. Fill Water." << endl
-         << "9. Diplay current ingredient quantity." << endl
-         << "10. Turn off." << endl
-         << endl;
-   
+void CoffeeMachine::displayIngredients() {
+    cout << "Coffee Beans: " << c_bean << " units" << endl;
+    cout << "Milk: " << milk << " units" << endl;
+    cout << "Water: " << water << " units" << endl;
+}
 
-    while(1)
-    {
-        choice();
+int main() {
+    CoffeeMachine coffeeMachine(10, 10, 10);
+
+    cout << "Please select an option from the following menu:" << endl;
+
+        cout << "1. Serve Cappuccino" << endl;
+        cout << "2. Serve Latte" << endl;
+        cout << "3. Serve Espresso" << endl;
+        cout << "4. Serve Milk" << endl;
+        cout << "5. Serve Water" << endl;
+        cout << "6. Fill Coffee beans" << endl;
+        cout << "7. Fill Milk" << endl;
+        cout << "8. Fill Water" << endl;
+        cout << "9. Display current ingredient quantities" << endl;
+        cout << "10. Turn off" << endl;
+    while (true) {
+        
+
+        int choice;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                coffeeMachine.serveCappuccino();
+                break;
+            case 2:
+                coffeeMachine.serveLatte();
+                break;
+            case 3:
+                coffeeMachine.serveEspresso();
+                break;
+            case 4:
+                coffeeMachine.serveMilk();
+                break;
+            case 5:
+                coffeeMachine.serveWater();
+                break;
+            case 6:
+                int coffeeBeansToAdd;
+                cout << "Enter the quantity of coffee beans to add: ";
+                cin >> coffeeBeansToAdd;
+                coffeeMachine.fillCoffeeBeans(coffeeBeansToAdd);
+                break;
+            case 7:
+                int milkToAdd;
+                cout << "Enter the quantity of milk to add: ";
+                cin >> milkToAdd;
+                coffeeMachine.fillMilk(milkToAdd);
+                break;
+            case 8:
+                int waterToAdd;
+                cout << "Enter the quantity of water to add: ";
+                cin >> waterToAdd;
+                coffeeMachine.fillWater(waterToAdd);
+                break;
+            case 9:
+                coffeeMachine.displayIngredients();
+                break;
+            case 10:
+                cout << "Turning off the coffee machine." << endl;
+                return 0;
+            default:
+                cout << "Invalid choice. Please select a valid option." << endl;
+                break;
+        }
     }
 
     return 0;
