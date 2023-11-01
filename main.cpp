@@ -8,8 +8,7 @@ private:
     int water;
 
 public:
-    CoffeeMachine(int initial_coffee_beans, int initial_milk, int initial_water)
-        : c_bean(initial_coffee_beans), milk(initial_milk), water(initial_water) {}
+    CoffeeMachine(int, int , int);
 
     void serveCappuccino();
     void serveLatte();
@@ -21,7 +20,11 @@ public:
     void fillWater(int quantity);
     void displayIngredients();
 };
-
+CoffeeMachine::CoffeeMachine(int initial_coffee_beans, int initial_milk, int initial_water) {
+    c_bean = initial_coffee_beans;
+    milk = initial_milk;
+    water = initial_water;
+}
 void CoffeeMachine::serveCappuccino() {
     if (c_bean < 2 || milk < 2 || water < 1) {
         cout << "Cappuccino cannot be served due to insufficient ingredients!" << endl;
