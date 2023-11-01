@@ -1,0 +1,47 @@
+Problem Statement: Coffee Machine Simulation
+
+Background: 
+tasked with developing a simulation of a coffee machine. The coffee machine has a limited supply of coffee beans, milk, and water. It can serve three types of coffee: Cappuccino, Latte, and Espresso. Additionally, it can serve Milk and Water separately. Users can also refill the machine with coffee beans, milk, and water.
+
+Requirements:
+
+The coffee machine has a starting quantity of coffee beans, milk, and water, each with a maximum capacity of 10 units.
+
+Users can select from the following options:
+
+Serve Cappuccino
+Serve Latte
+Serve Espresso
+Serve Milk
+Serve Water
+Fill Coffee Beans
+Fill Milk
+Fill Water
+Display current ingredient quantities
+Turn off the coffee machine
+The simulation should check ingredient quantities before serving coffee or milk. If any of the ingredients are insufficient, it should display a message indicating that the coffee or milk cannot be served due to lack of ingredients.
+
+Users can refill the machine with coffee beans, milk, or water. The refill should be limited to the machine's capacity. If the refill would exceed the capacity, display an overflow message.
+
+The display option should show the current quantities of coffee beans, milk, and water.
+
+The program should run in a loop, allowing the user to perform multiple actions until they choose to turn off the machine.
+
+The program should handle invalid user input gracefully and provide feedback when the input is not recognized.
+
+Deliverables:
+
+You are required to implement a C++ program following the provided code structure and fulfill the requirements described above. The program should provide a working simulation of a coffee machine that allows users to serve coffee, refill ingredients, and display current quantities.
+
+Constraints:
+
+The maximum capacity of coffee beans, milk, and water is 10 units each.
+Ingredient quantities cannot go below 0.
+The program should not terminate until the user explicitly selects the "Turn off" option.
+Evaluation:
+
+You will be evaluated based on the functionality of your program, including correctly implementing the coffee serving logic, ingredient refilling, and displaying ingredient quantities. Additionally, the program should be user-friendly, handling user input and invalid inputs gracefully.
+
+
+
+
